@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BallGuide : MonoBehaviour
 {
-    [SerializeField] private BallInput ballInput;
+    [SerializeField] private BallThrowController ballThrowController;
     [SerializeField] private Transform throwPoint;
     [SerializeField] private LineRenderer lineRenderer;
 
@@ -16,9 +16,20 @@ public class BallGuide : MonoBehaviour
     [Header("바닥 레이어 설정")]
     [SerializeField] private LayerMask groundLayer;
 
-    private Vector2 _throwDirection = new Vector2(1f, 1f);
-
     private readonly List<Vector3> points = new();
+
+#if UNITY_EDITOR
+    [ContextMenu("Auto Assign")]
+    private void AutoAssign()
+    {
+        ballThrowController = GameObject.Find("BallThrowManager").GetComponent<BallThrowController>();
+        throwPoint = GameObject.Find("ThrowPoint").GetComponent<Transform>();
+        lineRenderer = GameObject.Find("LineGuide").GetComponent<LineRenderer>();
+        landingMarker = GameObject.Find("Marker").GetComponent<Transform>();
+
+        groundLayer = LayerMask.GetMask("Ground");
+    }
+#endif
 
     private void Awake()
     {
@@ -31,20 +42,20 @@ public class BallGuide : MonoBehaviour
 
     private void OnEnable()
     {
-        if (ballInput == null) return;
+        if (ballThrowController == null) return;
 
-        ballInput.OnChargeStarted += ShowGuide;
-        ballInput.OnThrow += HideGuide;
-        ballInput.OnPowerChanged += DrawGuide;
+        ballThrowController.OnChargeStarted += ShowGuide;
+        ballThrowController.OnThrow += HideGuide;
+        ballThrowController.OnPowerChanged += DrawGuide;
     }
 
     private void OnDisable()
     {
-        if (ballInput == null) return;
+        if (ballThrowController == null) return;
         
-        ballInput.OnChargeStarted -= ShowGuide;
-        ballInput.OnThrow -= HideGuide;
-        ballInput.OnPowerChanged -= DrawGuide;
+        ballThrowController.OnChargeStarted -= ShowGuide;
+        ballThrowController.OnThrow -= HideGuide;
+        ballThrowController.OnPowerChanged -= DrawGuide;
     }
 
     private void ShowGuide()
@@ -53,7 +64,7 @@ public class BallGuide : MonoBehaviour
         landingMarker.gameObject.SetActive(true);
     }
 
-    private void HideGuide(float power)
+    private void HideGuide()
     {
         lineRenderer.enabled = false;
         landingMarker.gameObject.SetActive(false);
@@ -64,7 +75,7 @@ public class BallGuide : MonoBehaviour
         points.Clear();
 
         Vector2 startPos = throwPoint.position;
-        Vector2 velocity = _throwDirection.normalized * power;
+        Vector2 velocity = ballThrowController.GetThrowDirection.normalized * power;
 
         points.Add(startPos);
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(IPropsEvent))]
 public class PropsInfo : MonoBehaviour
 {
     [SerializeField] private int requiredTurn;

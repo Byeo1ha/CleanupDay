@@ -3,13 +3,24 @@ using UnityEngine;
 public class DogTargetBall : MonoBehaviour
 {
     [SerializeField] private Transform ballObj;
-    [SerializeField] private bool isTracking = false;
-    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float moveSpeed = 4f;
     [SerializeField] private float catchDistance = 0.1f;
+    [SerializeField] private BallThrowController ballThrowController;
+
+    private bool _isTracking = false;
+
+#if UNITY_EDITOR
+    [ContextMenu("Auto Assign")]
+    private void AutoAssign()
+    {
+        ballObj = GameObject.Find("Ball").GetComponent<Transform>();
+        ballThrowController = GameObject.Find("BallThrowManager").GetComponent<BallThrowController>();
+    }
+#endif
 
     private void Update()
     {
-        if (!isTracking) return;
+        if (!_isTracking) return;
 
         float distanceX = Mathf.Abs(ballObj.position.x - transform.position.x);
 
@@ -29,13 +40,27 @@ public class DogTargetBall : MonoBehaviour
         transform.position = new Vector2(nextX, currentPos.y);
     }
 
+    private void OnEnable()
+    {
+        if (ballThrowController == null) return;
+        
+        ballThrowController.OnThrow += StartTracking;
+    }
+
+    private void OnDisable()
+    {
+        if (ballThrowController == null) return;
+        
+        ballThrowController.OnThrow -= StartTracking;
+    }
+
     public void StartTracking()
     {
-        isTracking = true;
+        _isTracking = true;
     }
 
     public void StopTracking()
     {
-        isTracking = false;
+        _isTracking = false;
     }
 }
