@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(BallDogAnimation))]
@@ -5,6 +6,10 @@ public class DogBallCatched : MonoBehaviour
 {
     [SerializeField] private LayerMask ballLayer;
     [SerializeField] private CamFollowTarget camFollowTarget;
+    [SerializeField] private BallTargetCam ballTargetCam;
+
+    [SerializeField] private BallSystemManager ballSystemManager;
+
     private BallDogAnimation ballDogAnimation;
 
 #if UNITY_EDITOR
@@ -35,5 +40,18 @@ public class DogBallCatched : MonoBehaviour
         camFollowTarget.SetCamSmoothTime(0.1f);
         ballDogAnimation.StopRunAnim();
         ballDogAnimation.StartCatchIdleAnim();
+        
+        StartCoroutine(CBallCamReset());
+    }
+
+    private IEnumerator CBallCamReset()
+    {
+        yield return new WaitForSeconds(2f);
+
+        camFollowTarget.SetCamSmoothTime(0.2f);
+        ballTargetCam.OnCenterTarget();
+
+        ballSystemManager.DogPositionReset();
+        ballSystemManager.TurnCheck();
     }
 }

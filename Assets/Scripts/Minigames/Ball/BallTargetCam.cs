@@ -8,6 +8,7 @@ public class BallTargetCam : MonoBehaviour
     [Header("카메라 대상 오브젝트")]
     [SerializeField] private Transform dogObj;
     [SerializeField] private Transform markerObj;
+    [SerializeField] private Transform centerObj;
 
 #if UNITY_EDITOR
     [ContextMenu("Auto Assign")]
@@ -18,6 +19,7 @@ public class BallTargetCam : MonoBehaviour
 
         dogObj = GameObject.Find("Dog").GetComponent<Transform>();
         markerObj = GameObject.Find("Marker").GetComponent<Transform>();
+        centerObj = GameObject.Find("CamCenter").GetComponent<Transform>();
     }
 #endif
 
@@ -47,5 +49,11 @@ public class BallTargetCam : MonoBehaviour
     {
         camFollowTarget.SetCamSmoothTime(0f);
         camFollowTarget.SetCamTarget(markerObj);
+    }
+
+    public void OnCenterTarget()
+    {
+        camFollowTarget.SetCamSmoothTime(0.2f);
+        camFollowTarget.SetCamTarget(centerObj);
     }
 }

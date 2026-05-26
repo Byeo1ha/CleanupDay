@@ -34,6 +34,11 @@ public class BallPlayerAnimation : MonoBehaviour
 
     public void StartShootAnim()
     {
-        anim.SetTrigger("isShoot");
+        anim.SetBool("isThrow", true);
+    }
+
+    public void StopShootAnim()
+    {
+        anim.SetBool("isThrow", false);
     }
 }
