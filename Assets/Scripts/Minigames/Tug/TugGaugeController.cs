@@ -8,6 +8,10 @@ public class TugGaugeController : MonoBehaviour
     private float _gauge = 50f;
     private bool _dogPull = true;
 
+    public float Gauge => _gauge;
+    public float NormalizedGauge => _gauge / 100f;
+    public bool IsDogPulling => _dogPull;
+
     private void Update()
     {
         OnDogPull();
