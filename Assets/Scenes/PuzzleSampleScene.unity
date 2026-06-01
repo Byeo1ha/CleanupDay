@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 94998814}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -694,7 +694,7 @@ MonoBehaviour:
   endpos: {fileID: 1567982684}
   retruntime: 0.2
   onclickend: 0
-  onpuzzlefail: 1
+  onpuzzlefail: 0
 --- !u!58 &602818283
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1128,7 +1128,7 @@ MonoBehaviour:
   endpos: {fileID: 1329193817}
   retruntime: 0.2
   onclickend: 0
-  onpuzzlefail: 1
+  onpuzzlefail: 0
 --- !u!58 &970410007
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2099,7 +2099,7 @@ MonoBehaviour:
   endpos: {fileID: 1956806337}
   retruntime: 0.2
   onclickend: 0
-  onpuzzlefail: 1
+  onpuzzlefail: 0
 --- !u!58 &1407613253
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2716,7 +2716,7 @@ MonoBehaviour:
   endpos: {fileID: 1173578794}
   retruntime: 0.2
   onclickend: 0
-  onpuzzlefail: 1
+  onpuzzlefail: 0
 --- !u!58 &1567841349
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3776,7 +3776,7 @@ MonoBehaviour:
   endpos: {fileID: 1423218075}
   retruntime: 0.2
   onclickend: 0
-  onpuzzlefail: 1
+  onpuzzlefail: 0
 --- !u!58 &2112005260
 CircleCollider2D:
   m_ObjectHideFlags: 0
