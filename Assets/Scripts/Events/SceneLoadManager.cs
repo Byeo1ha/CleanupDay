@@ -21,6 +21,8 @@ public class SceneLoadManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        if (FadeManager.Instance == null) return;
+        
         StartCoroutine(CLoadScene(sceneName));
     }
 
