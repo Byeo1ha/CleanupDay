@@ -2,20 +2,15 @@ using UnityEngine;
 
 public class PuzzleManager : MonoBehaviour
 {
-    PuzzleData puzzleData;
-    [SerializeField] private GameObject puzzleStartPoint;
-    [SerializeField] private GameObject puzzleTargetPoint;
-    [SerializeField] private int puzzleNumber;
-    [SerializeField] private float puzzleMoveSpeed;
-
+    [Header("PuzzleData")]
     [SerializeField] Camera mainCamera;
     private RaycastHit2D hit;
     private GameObject grabbedTarget;
+    private PuzzleData puzzleData;
     
     void Start()
     {
-        Debug.Log("PuzzleManager Start");
-        
+        //Debug.Log("PuzzleManager Start");
     }
 
     void Update()
@@ -24,13 +19,12 @@ public class PuzzleManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             hit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition));
-            Debug.Log("FireLay");
 
             if (hit.collider != null)
             {
-                Debug.Log("Hit: " + hit.collider.gameObject.name);
+                //Debug.Log("Hit: " + hit.collider.gameObject.name);
                 grabbedTarget = hit.collider.gameObject;
-
+                puzzleData = hit.collider.GetComponent<PuzzleData>();
             }
         }
 
@@ -46,7 +40,8 @@ public class PuzzleManager : MonoBehaviour
         {
             if (grabbedTarget != null)
             {
-                Debug.Log("Hit: " + grabbedTarget.gameObject.name);
+                //Debug.Log("Hit: " + grabbedTarget.gameObject.name);
+                puzzleData.ClickSet(true);
                 grabbedTarget = null;
             }
         }
@@ -54,6 +49,7 @@ public class PuzzleManager : MonoBehaviour
 
     private void PuzzleMove()
     {
-        grabbedTarget.transform.position = mainCamera.ScreenPointToRay(Input.mousePosition).origin;
+        Vector3 CamPos = mainCamera.ScreenPointToRay(Input.mousePosition).origin;
+        grabbedTarget.transform.position = new Vector3(CamPos.x, CamPos.y, 0);
     }
 }

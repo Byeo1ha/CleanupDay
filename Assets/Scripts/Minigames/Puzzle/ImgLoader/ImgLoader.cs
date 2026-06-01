@@ -52,6 +52,11 @@ public class ImgLoader : MonoBehaviour
         return;
     }
 
+    public void ImgPiker()
+    {
+        
+    }
+
     [ContextMenu("Open File Browser")]
     public void OnenUI()
     {
