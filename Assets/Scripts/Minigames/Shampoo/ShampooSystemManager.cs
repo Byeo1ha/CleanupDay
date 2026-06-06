@@ -130,7 +130,7 @@ public class ShampooSystemManager : MonoBehaviour
         {
             _wipingAnim = true;
             shampooDogAnimation.ChangeToTowelAnimation();
-            shampooEffect.StopFloorWaterAnimation();
+            //shampooEffect.StopFloorWaterAnimation();
         }
 
         if (_charged < 100f) return;
