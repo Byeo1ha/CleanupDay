@@ -515,7 +515,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b71bde92fd56ab942952920c8eac809f, type: 2}
+  - {fileID: 2100000, guid: a33cc757b3ee6bd439a4fbe6bfdea130, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -940,7 +940,7 @@ GameObject:
   - component: {fileID: 521293372}
   - component: {fileID: 521293371}
   m_Layer: 0
-  m_Name: "\uCD94\uC5B5\uC0AC\uC9C41_\uC870\uAC014_\uD770\uC870\uAC01_0"
+  m_Name: User_Puzzle_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1519,7 +1519,7 @@ GameObject:
   - component: {fileID: 704520241}
   - component: {fileID: 704520240}
   m_Layer: 0
-  m_Name: "\uCD94\uC5B5\uC0AC\uC9C41_\uC870\uAC011_\uD770\uC870\uAC01_0"
+  m_Name: User_Puzzle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2147,7 +2147,7 @@ GameObject:
   - component: {fileID: 1005144379}
   - component: {fileID: 1005144378}
   m_Layer: 0
-  m_Name: "\uCD94\uC5B5\uC0AC\uC9C41_\uC870\uAC012_\uD770\uC870\uAC01_0"
+  m_Name: User_Puzzle_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3653,7 +3653,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1426666807
 Transform:
   m_ObjectHideFlags: 0
@@ -3688,7 +3688,7 @@ GameObject:
   - component: {fileID: 1515789216}
   - component: {fileID: 1515789215}
   m_Layer: 0
-  m_Name: "\uCD94\uC5B5\uC0AC\uC9C41_\uC870\uAC015_\uD770\uC870\uAC01_0"
+  m_Name: User_Puzzle_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3802,7 +3802,7 @@ GameObject:
   - component: {fileID: 1566725552}
   - component: {fileID: 1566725551}
   m_Layer: 0
-  m_Name: "\uCD94\uC5B5\uC0AC\uC9C41_\uC870\uAC013_\uD770\uC870\uAC01_0"
+  m_Name: User_Puzzle_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5768,13 +5768,13 @@ SceneRoots:
   - {fileID: 1362224954}
   - {fileID: 1304495585}
   - {fileID: 1426666807}
-  - {fileID: 1037650112}
   - {fileID: 1280269040}
+  - {fileID: 1037650112}
   - {fileID: 704520239}
   - {fileID: 1005144377}
   - {fileID: 1566725550}
   - {fileID: 521293370}
   - {fileID: 1515789214}
+  - {fileID: 341334003}
   - {fileID: 1618286395}
   - {fileID: 1124984540}
-  - {fileID: 341334003}
