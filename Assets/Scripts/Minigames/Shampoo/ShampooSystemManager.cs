@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ShampooSystemManager : MonoBehaviour
@@ -6,16 +7,24 @@ public class ShampooSystemManager : MonoBehaviour
     [SerializeField] private CursorBtn cursorBtn;
     [SerializeField] private ShampooDogAnimation shampooDogAnimation;
     [SerializeField] private ShampooEffect shampooEffect;
+    [SerializeField] private UIGlowHighlightController UIGlow;
 
     [SerializeField] private float chargeShampooSpeed = 100f;
     [SerializeField] private float chargeShowerSpeed = 100f;
     [SerializeField] private float chargeTowelSpeed = 100f;
+
+    [SerializeField] private string nextSceneName = "PlayerRoom";
 
     private CursorType _cursorType = CursorType.None;
     private bool _wipingAnim = false;
     private float _charged = 0f;
 
     private int _turn = 1;
+
+    private void Start()
+    {
+        UIGlow.SetShampooUIHighlight(true);
+    }
 
     private void OnEnable()
     {
@@ -44,12 +53,15 @@ public class ShampooSystemManager : MonoBehaviour
         {
             case CursorType.Shampoo:
                 ShampooInteract();
+                UIGlow.SetShampooUIHighlight(false);
                 break;
             case CursorType.Shower:
                 ShowerInteract();
+                UIGlow.SetShowerUIHighlight(false);
                 break;
             case CursorType.Towel:
                 TowelInteract();
+                UIGlow.SetTowelUIHighlight(false);
                 break;
             default:
                 return;
@@ -93,6 +105,7 @@ public class ShampooSystemManager : MonoBehaviour
         _charged = 0f;
         _turn++;
         Debug.Log("샴푸 이벤트 완료!");
+        UIGlow.SetShowerUIHighlight(true);
     }
 
     private void ShowerInteract()
@@ -113,6 +126,7 @@ public class ShampooSystemManager : MonoBehaviour
         _charged = 0f;
         _turn++;
         Debug.Log("샤워기 이벤트 완료!");
+        UIGlow.SetTowelUIHighlight(true);
     }
     
     private void TowelInteract()
@@ -138,6 +152,12 @@ public class ShampooSystemManager : MonoBehaviour
         _charged = 0f;
         _turn++;
         Debug.Log("타월 이벤트 완료!");
+        StartCoroutine(CNextMoveScene());
     }
 
+    private IEnumerator CNextMoveScene()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneLoadManager.Instance.LoadScene(nextSceneName);
+    }
 }
