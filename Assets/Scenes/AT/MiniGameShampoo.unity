@@ -561,6 +561,7 @@ MonoBehaviour:
   nextSceneName: PlayerRoom
   cutSceneManager: {fileID: 1815114707}
   shampooUIGuideText: {fileID: 350738833}
+  cursorImage: {fileID: 738153319}
 --- !u!1 &257320364
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181b5a0170eebed4bbc22b98b0cb18d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextFade
+  _isTextShow: 0
 --- !u!4 &350738832
 Transform:
   m_ObjectHideFlags: 0

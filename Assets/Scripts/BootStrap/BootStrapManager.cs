@@ -16,8 +16,8 @@ public class BootStrapManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(StartBootStrap());
-        StartCoroutine(StartLoadingText());
-        LoadingAnim = StartCoroutine(StartLoadingAnim());
+        //StartCoroutine(StartLoadingText());
+        // LoadingAnim = StartCoroutine(StartLoadingAnim());
     }
 
     private IEnumerator StartBootStrap()

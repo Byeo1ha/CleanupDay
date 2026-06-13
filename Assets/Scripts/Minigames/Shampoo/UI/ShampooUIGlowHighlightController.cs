@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UIGlowHighlightController : MonoBehaviour
+public class ShampooUIGlowHighlightController : MonoBehaviour
 {
     [SerializeField] private UIGlowHighlight ShampooUI;
     [SerializeField] private UIGlowHighlight ShowerUI;

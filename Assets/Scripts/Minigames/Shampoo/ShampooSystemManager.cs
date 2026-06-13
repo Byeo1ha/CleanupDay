@@ -7,7 +7,7 @@ public class ShampooSystemManager : MonoBehaviour
     [SerializeField] private CursorBtn cursorBtn;
     [SerializeField] private ShampooDogAnimation shampooDogAnimation;
     [SerializeField] private ShampooEffect shampooEffect;
-    [SerializeField] private UIGlowHighlightController UIGlow;
+    [SerializeField] private ShampooUIGlowHighlightController UIGlow;
 
     [SerializeField] private float chargeShampooSpeed = 100f;
     [SerializeField] private float chargeShowerSpeed = 100f;
@@ -16,6 +16,8 @@ public class ShampooSystemManager : MonoBehaviour
     [SerializeField] private string nextSceneName = "PlayerRoom";
     [SerializeField] private CutSceneManager cutSceneManager;
     [SerializeField] private ShampooUIGuideText shampooUIGuideText;
+
+    [SerializeField] private GameObject cursorImage;
 
     private CursorType _cursorType = CursorType.None;
     private bool _wipingAnim = false;
@@ -164,6 +166,8 @@ public class ShampooSystemManager : MonoBehaviour
     private IEnumerator ShowCutScene()
     {
         yield return StartCoroutine(cutSceneManager.StartCutScene());
+        Cursor.visible = true;
+        cursorImage.SetActive(false);
         SceneLoadManager.Instance.LoadScene(nextSceneName);
     }
 }
