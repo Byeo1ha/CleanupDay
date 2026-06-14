@@ -1,60 +1,219 @@
-using UnityEngine;
-using SimpleFileBrowser;
 using System.Collections.Generic;
 using System.IO;
-using System;
+using SimpleFileBrowser;
+using UnityEngine;
+
 public class ImgLoader : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer UserspriteRenderer;  //이미지를 표시할 SpriteRenderer
-    [SerializeField] private SpriteRenderer UserspriteRendereBg; //이미지를 표시할 SpriteRenderer
+    [SerializeField] private SpriteRenderer UserspriteRenderer;
+    [SerializeField] private SpriteRenderer UserspriteRendereBg;
+    [SerializeField] private List<PuzzlePieceSlot> puzzlePieceSlots = new List<PuzzlePieceSlot>();
+    [SerializeField] private bool applyMaskPiecesOnConfirm = true;
+
     private GameObject UserImg;
     private GameObject UserImgBG;
+    private Texture2D loadedTexture;
+    private Sprite loadedSprite;
+    private Vector3 savedUserImgPosition;
+    private Vector3 savedUserImgBgPosition;
+    private Vector3 savedUserImgScale;
+    private Vector3 savedUserImgBgScale;
 
     [SerializeField] private bool ImgCutteMod = false;
+    [SerializeField] private bool isEditPaused = false;
+    [SerializeField] private bool isImageConfirmed = false;
 
     void Start()
     {
         UserImg = UserspriteRenderer.transform.gameObject;
         UserImgBG = UserspriteRendereBg.transform.gameObject;
     }
-    // Update is called once per frame
+
     void Update()
     {
-        if (ImgCutteMod == true)
+        if (ImgCutteMod == false || isImageConfirmed == true)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ResumeImageEdit();
+        }
+
+        if (isEditPaused == false)
         {
             ImgMover(UserImg);
             ImgMover(UserImgBG);
 
             float Scrollpow = Input.mouseScrollDelta.y;
+            ImgZoomer(UserImg, Scrollpow);
+            ImgZoomer(UserImgBG, Scrollpow);
 
-            ImgZoomer(UserImg,Scrollpow);
-            ImgZoomer(UserImgBG,Scrollpow);
+            if (Input.GetMouseButtonDown(0))
+            {
+                PauseImageEdit();
+            }
         }
+    }
+
+    public void PauseImageEdit()
+    {
+        if (ImgCutteMod == false)
+        {
+            return;
+        }
+
+        isEditPaused = true;
+        Debug.Log("Image edit paused. Press Confirm to save or ESC to continue editing.");
+    }
+
+    public void ResumeImageEdit()
+    {
+        if (ImgCutteMod == false || isImageConfirmed == true)
+        {
+            return;
+        }
+
+        isEditPaused = false;
+        UserspriteRendereBg.enabled = true;
+        SetPuzzlePiecesVisible(false);
+        Debug.Log("Image edit resumed.");
+    }
+
+    [ContextMenu("GG")]
+    public void ConfirmImageTransform()
+    {
+        if (ImgCutteMod == false)
+        {
+            return;
+        }
+
+        if (isEditPaused == false)
+        {
+            Debug.Log("Pause image editing first, then confirm the current transform.");
+            return;
+        }
+
+        SaveCurrentImageTransform();
+        isImageConfirmed = true;
+        ImgCutteMod = false;
+        UserspriteRendereBg.enabled = false;
+
+        if (applyMaskPiecesOnConfirm == true)
+        {
+            ApplyImageToPuzzlePieces();
+            SavePuzzlePieceStates();
+        }
+
+        Debug.Log("Image transform confirmed and saved.");
+    }
+
+    public void SaveCurrentImageTransform()
+    {
+        savedUserImgPosition = UserImg.transform.position;
+        savedUserImgBgPosition = UserImgBG.transform.position;
+        savedUserImgScale = UserImg.transform.lossyScale;
+        savedUserImgBgScale = UserImgBG.transform.lossyScale;
+
+        Debug.Log($"Saved image position: {savedUserImgPosition}, scale: {savedUserImgScale}");
+    }
+
+    public void ApplyImageToPuzzlePieces()
+    {
+        if (loadedSprite == null)
+        {
+            Debug.LogWarning("No loaded image sprite to apply.");
+            return;
+        }
+
+        for (int i = 0; i < puzzlePieceSlots.Count; i++)
+        {
+            PuzzlePieceSlot slot = puzzlePieceSlots[i];
+            if (slot == null)
+            {
+                continue;
+            }
+
+            slot.ConfigurePiece(loadedSprite, savedUserImgPosition, savedUserImgScale);
+        }
+
+        SetPuzzlePiecesVisible(true);
+    }
+
+    public void SavePuzzlePieceStates()
+    {
+        for (int i = 0; i < puzzlePieceSlots.Count; i++)
+        {
+            PuzzlePieceSlot slot = puzzlePieceSlots[i];
+            if (slot == null)
+            {
+                continue;
+            }
+
+            slot.SaveCurrentState();
+        }
+    }
+
+    public void ApplySavedPuzzlePieceStates()
+    {
+        for (int i = 0; i < puzzlePieceSlots.Count; i++)
+        {
+            PuzzlePieceSlot slot = puzzlePieceSlots[i];
+            if (slot == null)
+            {
+                continue;
+            }
+
+            slot.ApplySavedState();
+        }
+    }
+
+    public void ClearPuzzlePieceStates()
+    {
+        for (int i = 0; i < puzzlePieceSlots.Count; i++)
+        {
+            PuzzlePieceSlot slot = puzzlePieceSlots[i];
+            if (slot == null)
+            {
+                continue;
+            }
+
+            slot.ClearPiece();
+        }
+    }
+
+    public Vector3 GetSavedUserImagePosition()
+    {
+        return savedUserImgPosition;
+    }
+
+    public Vector3 GetSavedUserImageScale()
+    {
+        return savedUserImgScale;
+    }
+
+    public List<PuzzlePieceSlot> GetPuzzlePieceSlots()
+    {
+        return puzzlePieceSlots;
     }
 
     public void ImgZoomer(GameObject ZoomTrg, float ScrPow)
     {
         if (ScrPow > 0)
         {
-            //Debug.Log("SCR UP");
-            ZoomTrg.transform.localScale += new Vector3(0.2f,0.2f,0);
+            ZoomTrg.transform.localScale += new Vector3(0.2f, 0.2f, 0f);
         }
+
         if (ScrPow < 0)
         {
-            //Debug.Log("SCR Dwon");
-            ZoomTrg.transform.localScale -= new Vector3(0.2f,0.2f,0);
+            ZoomTrg.transform.localScale -= new Vector3(0.2f, 0.2f, 0f);
         }
     }
 
     public void ImgMover(GameObject moveTrg)
     {
         moveTrg.transform.position = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
-        return;
-    }
-
-    public void ImgPiker()
-    {
-        
     }
 
     [ContextMenu("Open File Browser")]
@@ -64,14 +223,13 @@ public class ImgLoader : MonoBehaviour
         FileBrowser.ShowLoadDialog(onSuccess, onCancel, 0, false, null, null);
     }
 
-    public void pickMode()
-    {
-        Debug.Log("Single file selection mode.");
-    }
-
     public void onSuccess(string[] paths)
     {
         ImgCutteMod = true;
+        isEditPaused = false;
+        isImageConfirmed = false;
+        UserspriteRendereBg.enabled = true;
+        ClearPuzzlePieceStates();
         Debug.Log("Selected: " + string.Join(", ", paths));
 
         LoadImage(paths[0]);
@@ -82,14 +240,27 @@ public class ImgLoader : MonoBehaviour
         Debug.Log("File selection cancelled.");
     }
 
-    public void LoadImage(string path) //이미지 로드 함수
+    public void LoadImage(string path)
     {
         byte[] bytes = File.ReadAllBytes(path);
-        string url = "file:///" + path;
-        Texture2D texture = new Texture2D(2, 2);
-        texture.LoadImage(bytes);
-        UserspriteRenderer.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-        UserspriteRendereBg.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+        loadedTexture = new Texture2D(2, 2);
+        loadedTexture.LoadImage(bytes);
+        loadedSprite = Sprite.Create(loadedTexture, new Rect(0, 0, loadedTexture.width, loadedTexture.height), new Vector2(0.5f, 0.5f));
+        UserspriteRenderer.sprite = loadedSprite;
+        UserspriteRendereBg.sprite = loadedSprite;
+    }
 
+    private void SetPuzzlePiecesVisible(bool isVisible)
+    {
+        for (int i = 0; i < puzzlePieceSlots.Count; i++)
+        {
+            PuzzlePieceSlot slot = puzzlePieceSlots[i];
+            if (slot == null)
+            {
+                continue;
+            }
+
+            slot.SetVisible(isVisible);
+        }
     }
 }
