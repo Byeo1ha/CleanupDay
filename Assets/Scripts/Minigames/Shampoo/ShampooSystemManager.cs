@@ -34,14 +34,20 @@ public class ShampooSystemManager : MonoBehaviour
     {
         cursorEvent.OnRubbed += TryInteract;
         cursorBtn.OnChangeTool += ToolType;
+        cursorBtn.OnChangeTool += TextInteract;
         cursorEvent.OnRubbedStop += StopInteract;
+        cursorEvent.OnHeldOnDog += TryShowerInteract;
+        cursorEvent.OnHeldOnDogStop += StopShowerInteract;
     }
 
     private void OnDisable()
     {
         cursorEvent.OnRubbed -= TryInteract;
         cursorBtn.OnChangeTool -= ToolType;
+        cursorBtn.OnChangeTool -= TextInteract;
         cursorEvent.OnRubbedStop -= StopInteract;
+        cursorEvent.OnHeldOnDog -= TryShowerInteract;
+        cursorEvent.OnHeldOnDogStop -= StopShowerInteract;
     }
 
     private void ToolType(CursorType type)
@@ -53,25 +59,34 @@ public class ShampooSystemManager : MonoBehaviour
     {
         if (_cursorType == CursorType.None) return;
 
-        switch (_cursorType)
+        if (_cursorType == CursorType.Shampoo && _turn == 1)
         {
-            case CursorType.Shampoo:
-                shampooUIGuideText.StopGuide();
-                ShampooInteract();
-                UIGlow.SetShampooUIHighlight(false);
-                break;
-            case CursorType.Shower:
-                shampooUIGuideText.StopGuide();
-                ShowerInteract();
-                UIGlow.SetShowerUIHighlight(false);
-                break;
-            case CursorType.Towel:
-                TowelInteract();
-                UIGlow.SetTowelUIHighlight(false);
-                break;
-            default:
-                return;
+            shampooUIGuideText.StopGuide();
+            ShampooInteract();
+            UIGlow.SetShampooUIHighlight(false);
         }
+        else if (_cursorType == CursorType.Towel && _turn == 3)
+        {
+            shampooUIGuideText.StopGuide();
+            TowelInteract();
+            UIGlow.SetTowelUIHighlight(false);
+        }
+    }
+
+    private void TryShowerInteract()
+    {
+        if (_cursorType != CursorType.Shower || _turn != 2) return;
+
+        shampooUIGuideText.StopGuide();
+        ShowerInteract();
+        UIGlow.SetShowerUIHighlight(false);
+    }
+
+    private void StopShowerInteract()
+    {
+        if (_cursorType != CursorType.Shower) return;
+
+        shampooDogAnimation.StopShowerAnimation();
     }
 
     private void StopInteract()
@@ -169,5 +184,23 @@ public class ShampooSystemManager : MonoBehaviour
         Cursor.visible = true;
         cursorImage.SetActive(false);
         SceneLoadManager.Instance.LoadScene(nextSceneName);
+    }
+
+    private void TextInteract(CursorType type)
+    {
+        if (type == CursorType.Shampoo && _turn == 1)
+        {
+            shampooUIGuideText.ShampooBtnClickText();
+        }
+
+        if (type == CursorType.Shower && _turn == 2)
+        {
+            shampooUIGuideText.ShowerBtnClickText();
+        }
+
+        if (type == CursorType.Towel && _turn == 3)
+        {
+            shampooUIGuideText.TowelBtnClickText();
+        }
     }
 }

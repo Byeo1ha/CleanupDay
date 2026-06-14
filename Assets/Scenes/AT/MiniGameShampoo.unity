@@ -556,7 +556,7 @@ MonoBehaviour:
   shampooEffect: {fileID: 1024466094}
   UIGlow: {fileID: 854496289}
   chargeShampooSpeed: 50
-  chargeShowerSpeed: 50
+  chargeShowerSpeed: 20
   chargeTowelSpeed: 50
   nextSceneName: PlayerRoom
   cutSceneManager: {fileID: 1815114707}
