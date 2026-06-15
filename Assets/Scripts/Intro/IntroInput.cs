@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class IntroInput : MonoBehaviour
 {
+    [SerializeField] private Book book;
     [SerializeField] private AutoFlip autoFlip;
     [SerializeField] private BookFirstVisitRevealController revealController;
 
@@ -12,8 +13,15 @@ public class IntroInput : MonoBehaviour
         if (autoFlip.IsFlipping) return;
         if (revealController != null && revealController.IsRevealing) return;
 
+        int currentPage = book.GetPageIndex(BookPageSlot.RightNext);
+
+        if (!book.IsPageIntroFinished(currentPage))
+            return;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("Space 허용");
+        
             autoFlip.FlipRightPage();
         }
     }

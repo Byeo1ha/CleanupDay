@@ -154,6 +154,14 @@ public class BookFirstVisitRevealController : MonoBehaviour
         }
     
         RefreshAllCovers();
+
+        BookPageSlot lastSlot = revealLeftPageFirst ? BookPageSlot.RightNext : BookPageSlot.LeftNext;
+        int lastPageIndex = book.GetPageIndex(lastSlot);
+        
+        while (!book.IsPageIntroFinished(lastPageIndex))
+        {
+            yield return null;
+        }
     
         if (blockBookInputDuringReveal)
             book.interactable = previousInteractable;
