@@ -1330,12 +1330,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 1c151ad24273fa24187916abd9676ec8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 888dfe411a7039c4ab29e5fe9946fa77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 15.359999, y: 8.639999}
+  m_Size: {x: 18.285713, y: 10.285713}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1529,13 +1529,13 @@ MonoBehaviour:
   armTugVisual: {fileID: 1004254376}
   armTugSpriteRenderer: {fileID: 1943360411}
   armTugSprites:
-  - {fileID: 21300000, guid: 1ac55767b0a73ec40984236ca52a85f8, type: 3}
-  - {fileID: 21300000, guid: 143554786c4099645aae0472845425c1, type: 3}
-  - {fileID: 21300000, guid: 9fa5ec47eed177f4399c3be378eb97e1, type: 3}
-  - {fileID: 21300000, guid: 1c151ad24273fa24187916abd9676ec8, type: 3}
-  - {fileID: 21300000, guid: 6c2ea0b4ddc6c064da33c32f29325386, type: 3}
-  - {fileID: 21300000, guid: 35cb1e82e540556468566681e588b047, type: 3}
-  - {fileID: 21300000, guid: db1c4bc6b71faa14199e10f37008120f, type: 3}
+  - {fileID: 21300000, guid: 7cbafd3b501501f44a38f092d6d65fec, type: 3}
+  - {fileID: 21300000, guid: 26fb7fd56ba719d4484fc3903ed02125, type: 3}
+  - {fileID: 21300000, guid: 43036ddf99692fa4783b27513c011011, type: 3}
+  - {fileID: 21300000, guid: 888dfe411a7039c4ab29e5fe9946fa77, type: 3}
+  - {fileID: 21300000, guid: c33538ea438f11f4da54ea2581f8611e, type: 3}
+  - {fileID: 21300000, guid: 17dc6ccafd04887478da2222afa56dd8, type: 3}
+  - {fileID: 21300000, guid: ade45030ae355044d86779f74b2fcd38, type: 3}
   dogShakeTop: {fileID: 1166855622}
   dogShakeBottom: {fileID: 364101218}
   armTugShake: {fileID: 1943360413}

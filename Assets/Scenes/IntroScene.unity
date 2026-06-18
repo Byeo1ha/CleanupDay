@@ -210,6 +210,79 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &297895296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 297895298}
+  - component: {fileID: 297895297}
+  m_Layer: 0
+  m_Name: Page_3_ShiftFade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &297895297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297895296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b85abfd043a7824c860117f77ddc4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BookPageColorShiftFade
+  book: {fileID: 574257677}
+  targetSlot: 3
+  targetPageIndex: 2
+  coldFrames:
+  - {fileID: 21300000, guid: 149ac307bbe47fd4780a6837bd5c65ba, type: 3}
+  - {fileID: 21300000, guid: 2c27ab5529066894581e17c815e31928, type: 3}
+  - {fileID: 21300000, guid: 187e64a71f2804740a23fcae72da44b2, type: 3}
+  - {fileID: 21300000, guid: 7b44e728c3c7deb41ac5a57628553d19, type: 3}
+  - {fileID: 21300000, guid: d0b4c193ba28dda48ba40669b1c47757, type: 3}
+  - {fileID: 21300000, guid: a56667e68c56971459e016f2bd4f8125, type: 3}
+  - {fileID: 21300000, guid: b4907fd31c1ac534897ec46057bae2b2, type: 3}
+  - {fileID: 21300000, guid: 87ec64b4b5d5f0948855f58f3d42877d, type: 3}
+  - {fileID: 21300000, guid: a1e2af2cb8e5f9e4985fe5dcf2ad7eb0, type: 3}
+  - {fileID: 21300000, guid: ea5232393f7d47741a8806f20b3f79ac, type: 3}
+  - {fileID: 21300000, guid: 99addd04929c6674c8f0bcf638eb08d4, type: 3}
+  - {fileID: 21300000, guid: bf081d41f0d44ce43af91f1e16cf3212, type: 3}
+  - {fileID: 21300000, guid: 711c2bcea7a8cb84e9f96d45b3e97f35, type: 3}
+  - {fileID: 21300000, guid: 598aa2aa77abff94cb9bbfc737de7e72, type: 3}
+  - {fileID: 21300000, guid: bf081d41f0d44ce43af91f1e16cf3212, type: 3}
+  - {fileID: 21300000, guid: 711c2bcea7a8cb84e9f96d45b3e97f35, type: 3}
+  - {fileID: 21300000, guid: 598aa2aa77abff94cb9bbfc737de7e72, type: 3}
+  - {fileID: 21300000, guid: a8ab82825ce6a2341b7567a73c95a235, type: 3}
+  - {fileID: 21300000, guid: c99d9266884b0e14f95e085eeaec154b, type: 3}
+  - {fileID: 21300000, guid: b4d3742fc2560bb4384399dbbd67f91d, type: 3}
+  - {fileID: 21300000, guid: d9a5bc28e6d7e32479fcc22ec5951037, type: 3}
+  - {fileID: 21300000, guid: f2078fc6940abac4685b3eee76c55b68, type: 3}
+  frameRate: 6
+  delayBeforeFade: 3.5
+  fadeDuration: 2.5
+--- !u!4 &297895298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297895296}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &395051405
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +421,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395051405}
   m_CullTransparentMesh: 1
+--- !u!1 &444182095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 444182097}
+  - component: {fileID: 444182096}
+  m_Layer: 0
+  m_Name: Page_6_ShiftFade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &444182096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444182095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b85abfd043a7824c860117f77ddc4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BookPageColorShiftFade
+  book: {fileID: 574257677}
+  targetSlot: 3
+  targetPageIndex: 5
+  coldFrames:
+  - {fileID: 21300000, guid: 4bcd52b00ab180c47aa7b506427bd32e, type: 3}
+  - {fileID: 21300000, guid: e02bfd9327d63f74c91ded36029225f1, type: 3}
+  - {fileID: 21300000, guid: 529a776cc341f0145ad10a10278dc029, type: 3}
+  - {fileID: 21300000, guid: a9dc9b9349acb604a909d5795fa58c78, type: 3}
+  - {fileID: 21300000, guid: 3a30089d046d6324fa741b4b0b7582c0, type: 3}
+  - {fileID: 21300000, guid: 42e40bf356efad740af3d2babde5f366, type: 3}
+  - {fileID: 21300000, guid: 78a29fdeaeade2a4eb2399f859799f6c, type: 3}
+  - {fileID: 21300000, guid: e290ea62e3686624ba73e2b5b649f62c, type: 3}
+  - {fileID: 21300000, guid: b69bd11aa6f21304caf272d7a66f54e9, type: 3}
+  - {fileID: 21300000, guid: 6baec1feb82c15048ba3e2f5383798fd, type: 3}
+  - {fileID: 21300000, guid: 0cc2bccb329a1214a942e37aa6ff55e1, type: 3}
+  - {fileID: 21300000, guid: 50967358e6947be4495750cf2f141173, type: 3}
+  - {fileID: 21300000, guid: 5bc27e020e8a36e409f2e84fa84d414d, type: 3}
+  - {fileID: 21300000, guid: 862c27ad5e64b824bb4ae030dc4c04ea, type: 3}
+  - {fileID: 21300000, guid: 172414e6dfe358742ac630d1e84c71e3, type: 3}
+  - {fileID: 21300000, guid: aae29916335e6564a9fc459da21e915b, type: 3}
+  - {fileID: 21300000, guid: d38849abb9fae7243b8f672f3883adb5, type: 3}
+  - {fileID: 21300000, guid: b30ffade9a629454691ddcb1c460dd34, type: 3}
+  - {fileID: 21300000, guid: f3c05e237fece1744b55c14895080918, type: 3}
+  - {fileID: 21300000, guid: 34185acc2d7b6444687d4dde7346f0eb, type: 3}
+  - {fileID: 21300000, guid: f76caca29703ad44780784b964bc007d, type: 3}
+  - {fileID: 21300000, guid: 60edc4a731772854e9eaa74354b8e508, type: 3}
+  frameRate: 6
+  delayBeforeFade: 4.5
+  fadeDuration: 2.5
+--- !u!4 &444182097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444182095}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &492375078
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,10 +769,12 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 091b36d6e9ffdd146910bffc34c4a98c, type: 3}
     - {fileID: 21300000, guid: f5f89fedc8b14a243b8ed47e61016676, type: 3}
     - {fileID: 21300000, guid: ac96e8d732750894ca6486e844dacf02, type: 3}
+    loopStartFrame: 0
   - frames:
     - {fileID: 21300000, guid: 3e71a51ce679a814993789f01b0e133c, type: 3}
     - {fileID: 21300000, guid: f5446508cb0dbea44b2879d9f1ee2ccf, type: 3}
     - {fileID: 21300000, guid: 5345272b553afb142a6e55a054ac634b, type: 3}
+    loopStartFrame: 0
   - frames:
     - {fileID: 21300000, guid: b6c44517beaa6df4796940f0e7792459, type: 3}
     - {fileID: 21300000, guid: 0aea04d9b684a73468515257c80826c3, type: 3}
@@ -643,7 +791,9 @@ MonoBehaviour:
     - {fileID: 21300000, guid: a1e2af2cb8e5f9e4985fe5dcf2ad7eb0, type: 3}
     - {fileID: 21300000, guid: ea5232393f7d47741a8806f20b3f79ac, type: 3}
     - {fileID: 21300000, guid: 99addd04929c6674c8f0bcf638eb08d4, type: 3}
-  - frames:
+    - {fileID: 21300000, guid: a1e2af2cb8e5f9e4985fe5dcf2ad7eb0, type: 3}
+    - {fileID: 21300000, guid: ea5232393f7d47741a8806f20b3f79ac, type: 3}
+    - {fileID: 21300000, guid: 99addd04929c6674c8f0bcf638eb08d4, type: 3}
     - {fileID: 21300000, guid: bf081d41f0d44ce43af91f1e16cf3212, type: 3}
     - {fileID: 21300000, guid: 711c2bcea7a8cb84e9f96d45b3e97f35, type: 3}
     - {fileID: 21300000, guid: 598aa2aa77abff94cb9bbfc737de7e72, type: 3}
@@ -669,10 +819,12 @@ MonoBehaviour:
     - {fileID: 21300000, guid: ddc7d84139b9eee499614fb5b497bbf6, type: 3}
     - {fileID: 21300000, guid: ce371745d344f15439e3dcd34498bea1, type: 3}
     - {fileID: 21300000, guid: 712939eab84e6fc4d9c53a739f45391f, type: 3}
+    loopStartFrame: 33
   - frames:
     - {fileID: 21300000, guid: f08c86fa449aa6142a01c43880b58d9a, type: 3}
     - {fileID: 21300000, guid: 6651bd69e7e7241429d4c696bb6edc31, type: 3}
     - {fileID: 21300000, guid: 808f30f96522f4a4db7a0c59b94260aa, type: 3}
+    loopStartFrame: 0
   - frames:
     - {fileID: 21300000, guid: 204c4a56035bc9746be325f7148b823e, type: 3}
     - {fileID: 21300000, guid: 7dcaa2c5586db544b841e132fbebffeb, type: 3}
@@ -690,7 +842,10 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 6baec1feb82c15048ba3e2f5383798fd, type: 3}
     - {fileID: 21300000, guid: 0cc2bccb329a1214a942e37aa6ff55e1, type: 3}
     - {fileID: 21300000, guid: 50967358e6947be4495750cf2f141173, type: 3}
-  - frames:
+    - {fileID: 21300000, guid: b69bd11aa6f21304caf272d7a66f54e9, type: 3}
+    - {fileID: 21300000, guid: 6baec1feb82c15048ba3e2f5383798fd, type: 3}
+    - {fileID: 21300000, guid: 0cc2bccb329a1214a942e37aa6ff55e1, type: 3}
+    - {fileID: 21300000, guid: 50967358e6947be4495750cf2f141173, type: 3}
     - {fileID: 21300000, guid: 5bc27e020e8a36e409f2e84fa84d414d, type: 3}
     - {fileID: 21300000, guid: 862c27ad5e64b824bb4ae030dc4c04ea, type: 3}
     - {fileID: 21300000, guid: 172414e6dfe358742ac630d1e84c71e3, type: 3}
@@ -711,6 +866,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 3d2f7114346601e4e9e18f5abd6c67d7, type: 3}
     - {fileID: 21300000, guid: 740ad9a71c08b824cb3c01746f73015c, type: 3}
     - {fileID: 21300000, guid: 323ba5dfbfb6aa545b3bebeb15fe2663, type: 3}
+    loopStartFrame: 33
   pageFrameRate: 6
   interactable: 1
   enableShadowEffect: 1
@@ -1184,6 +1340,8 @@ GameObject:
   m_Component:
   - component: {fileID: 599925341}
   - component: {fileID: 600286037}
+  - component: {fileID: 600286040}
+  - component: {fileID: 600286041}
   - component: {fileID: 574257677}
   - component: {fileID: 600286038}
   - component: {fileID: 600286039}
@@ -1627,6 +1785,38 @@ MonoBehaviour:
   playInitialRevealOnStart: 1
   revealLeftPageFirst: 1
   blockBookInputDuringReveal: 1
+--- !u!114 &600286040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580316129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7390dfe279c4d8d459df696db5d60ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BookPageColorShiftTrigger
+  book: {fileID: 574257677}
+  colorShiftFade: {fileID: 297895297}
+  targetPageIndex: 2
+  targetSlot: 3
+--- !u!114 &600286041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580316129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7390dfe279c4d8d459df696db5d60ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BookPageColorShiftTrigger
+  book: {fileID: 574257677}
+  colorShiftFade: {fileID: 444182096}
+  targetPageIndex: 6
+  targetSlot: 3
 --- !u!222 &600290233
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1667,11 +1857,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IntroSystemManager
   nextSceneName: PlayerRoom
   book: {fileID: 574257677}
-  lastPage: 6
+  lastPage: 4
   nextSceneBtn: {fileID: 1283861504}
   rightHotSpot: {fileID: 580225279}
   introUIGuideText: {fileID: 1893417519}
-  showBtnDelay: 5
+  showBtnDelay: 10
 --- !u!4 &691808773
 Transform:
   m_ObjectHideFlags: 0
@@ -1699,6 +1889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0c7364b97faa94e91f9ffe34b4a2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntroInput
+  book: {fileID: 574257677}
   autoFlip: {fileID: 600286038}
   revealController: {fileID: 600286039}
 --- !u!1 &720833975
@@ -2809,3 +3000,5 @@ SceneRoots:
   - {fileID: 1323088381}
   - {fileID: 720833976}
   - {fileID: 1893417518}
+  - {fileID: 297895298}
+  - {fileID: 444182097}
