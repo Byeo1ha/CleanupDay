@@ -873,7 +873,7 @@ MonoBehaviour:
   tugGaugeController: {fileID: 1982391410}
   minGauge: 40
   maxGauge: 60
-  scoreIncreaseSpeed: 10
+  scoreIncreaseSpeed: 6
   clearScore: 100
   cutSceneManager: {fileID: 33965605}
   nextSceneName: PlayerRoom
@@ -1726,8 +1726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 943b4fb2b05409349a7244a852b19509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TugGaugeController
-  dogPower: 12
-  chargeSpeed: 12
+  dogPower: 6
+  chargeSpeed: 10
   tugSystemManager: {fileID: 1140294710}
   tugUIGuideText: {fileID: 1262166578}
 --- !u!114 &1982391411
