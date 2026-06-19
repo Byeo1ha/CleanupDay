@@ -55,7 +55,7 @@ public class IntroSystemManager : MonoBehaviour
     private void OnPageFlipped()
     {
         _guideTimer = 0f;
-        _guideTimerMax = 10f;
+        _guideTimerMax = 13f;
         _guideAlertNow = false;
         introUIGuideText.StopGuide();
     }

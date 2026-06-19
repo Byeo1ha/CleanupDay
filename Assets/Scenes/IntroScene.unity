@@ -1861,7 +1861,7 @@ MonoBehaviour:
   nextSceneBtn: {fileID: 1283861504}
   rightHotSpot: {fileID: 580225279}
   introUIGuideText: {fileID: 1893417519}
-  showBtnDelay: 10
+  showBtnDelay: 9
 --- !u!4 &691808773
 Transform:
   m_ObjectHideFlags: 0

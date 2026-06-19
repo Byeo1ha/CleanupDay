@@ -8,6 +8,7 @@ public class BoxPanelAnim : MonoBehaviour
     [SerializeField] private RectTransform targetPos;
     [SerializeField] private RectTransform originalPos;
     [SerializeField] private float moveDuration = 0.3f;
+    [SerializeField] private CutSceneRemind cutSceneRemind;
 
     private BoxUIBtn boxUIBtn;
     private RectTransform rectTransform;
@@ -33,6 +34,7 @@ public class BoxPanelAnim : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Tab) 
         || Input.GetKeyDown(KeyCode.Escape)) && _active && !_duration)
         {
+            cutSceneRemind.SetPropsNone();
             PlayMoveToOriginalPos();
         }
     }
