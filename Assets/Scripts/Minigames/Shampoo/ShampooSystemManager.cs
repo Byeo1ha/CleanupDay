@@ -25,6 +25,10 @@ public class ShampooSystemManager : MonoBehaviour
 
     private int _turn = 1;
 
+    public float Charged => _charged;
+    public float NormalizedCharged => Mathf.Clamp01(_charged / 100f);
+    public int Turn => _turn;
+
     private void Start()
     {
         UIGlow.SetShampooUIHighlight(true);
@@ -53,6 +57,22 @@ public class ShampooSystemManager : MonoBehaviour
     private void ToolType(CursorType type)
     {
         _cursorType = type;
+        ResetChargedForNextTool(type);
+    }
+
+    private void ResetChargedForNextTool(CursorType type)
+    {
+        if (_charged < 100f) return;
+
+        if (type == CursorType.Shower && _turn == 2)
+        {
+            _charged = 0f;
+        }
+
+        if (type == CursorType.Towel && _turn == 3)
+        {
+            _charged = 0f;
+        }
     }
 
     private void TryInteract()
@@ -123,7 +143,7 @@ public class ShampooSystemManager : MonoBehaviour
 
         if (_charged < 100f) return;
 
-        _charged = 0f;
+        _charged = 100f;
         _turn++;
         Debug.Log("샴푸 이벤트 완료!");
         shampooUIGuideText.EndToolShampoo();
@@ -145,7 +165,7 @@ public class ShampooSystemManager : MonoBehaviour
 
         if (_charged < 100f) return;
 
-        _charged = 0f;
+        _charged = 100f;
         _turn++;
         Debug.Log("샤워기 이벤트 완료!");
         shampooUIGuideText.EndToolShower();
@@ -172,7 +192,7 @@ public class ShampooSystemManager : MonoBehaviour
 
         if (_charged < 100f) return;
 
-        _charged = 0f;
+        _charged = 100f;
         _turn++;
         Debug.Log("타월 이벤트 완료!");
         StartCoroutine(ShowCutScene());
