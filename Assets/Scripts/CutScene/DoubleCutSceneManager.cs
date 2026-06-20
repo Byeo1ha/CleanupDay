@@ -1,21 +1,27 @@
 using System.Collections;
 using UnityEngine;
 
-public class DoubleCutSceneManager : MonoBehaviour
+public class MultiCutSceneManager : MonoBehaviour
 {
-    [SerializeField] private CutSceneFade cutSceneFade1;
-    [SerializeField] private CutSceneFade cutSceneFade2;
+    [SerializeField] private CutSceneFade[] cutSceneFade;
 
     public IEnumerator StartCutScene()
     {
         FadeManager.Instance.HalfFadeOut();
-        cutSceneFade1.FadeIn();
-        cutSceneFade2.FadeIn();
+
+        for (int i = 0; i < cutSceneFade.Length; i++)
+        {
+            cutSceneFade[i].FadeIn();
+        }
+        
 
         yield return new WaitForSecondsRealtime(5f);
         FadeManager.Instance.HalfFadeIn();
-        cutSceneFade1.FadeOut();
-        cutSceneFade2.FadeOut();
+
+        for (int i = 0; i < cutSceneFade.Length; i++)
+        {
+            cutSceneFade[i].FadeOut();
+        }
 
         yield return new WaitForSecondsRealtime(2f);
     }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CutSceneRemind : MonoBehaviour
 {
-    [SerializeField] private DoubleCutSceneManager pictureCutScene;
+    [SerializeField] private MultiCutSceneManager pictureCutScene;
     [SerializeField] private CutSceneManager ballCutScene;
     [SerializeField] private CutSceneManager tugCutScene;
     [SerializeField] private CutSceneManager leashCutScene;
