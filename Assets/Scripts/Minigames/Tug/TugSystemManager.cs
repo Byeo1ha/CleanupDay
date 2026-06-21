@@ -21,6 +21,7 @@ public class TugSystemManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(CGameStart());
+        BGMManager.Instance.SetFilterMode(BGMManager.AudioLevel.None);
     }
 
     private IEnumerator CGameStart()
@@ -33,6 +34,7 @@ public class TugSystemManager : MonoBehaviour
     {
         if (isCleared) return;
         if (tugGaugeController == null) return;
+        if (!tugGaugeController.FirstPlayerPull) return;
 
         float gauge = tugGaugeController.Gauge;
 

@@ -44,12 +44,12 @@ public class FadeManager : MonoBehaviour
 
     public void HalfFadeIn()
     {
-        StartCoroutine(CFadeIn(0.5f, 0f));
+        StartCoroutine(CFadeIn(0.7f, 0f));
     }
 
     public void HalfFadeOut()
     {
-        StartCoroutine(CFadeOut(0f, 0.5f));
+        StartCoroutine(CFadeOut(0f, 0.7f));
     }
 
 
@@ -61,7 +61,7 @@ public class FadeManager : MonoBehaviour
         while (alpha > endAlpha)
         {
             alpha -= 0.01f;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSecondsRealtime(0.01f);
             fadeScreen.color = new Color(0f, 0f, 0f, alpha);
         }
         fadeScreen.gameObject.SetActive(false);
@@ -77,7 +77,7 @@ public class FadeManager : MonoBehaviour
         while (alpha < endAlpha)
         {
             alpha += 0.01f;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSecondsRealtime(0.01f);
             fadeScreen.color = new Color(0f, 0f, 0f, alpha);
         }
     }

@@ -7,14 +7,19 @@ public class ShampooSystemManager : MonoBehaviour
     [SerializeField] private CursorBtn cursorBtn;
     [SerializeField] private ShampooDogAnimation shampooDogAnimation;
     [SerializeField] private ShampooEffect shampooEffect;
-    [SerializeField] private UIGlowHighlightController UIGlow;
+    [SerializeField] private ShampooUIGlowHighlightController UIGlow;
 
-    [SerializeField] private float chargeShampooSpeed = 100f;
-    [SerializeField] private float chargeShowerSpeed = 100f;
-    [SerializeField] private float chargeTowelSpeed = 100f;
+    [SerializeField] private float chargeShampooSpeed = 70f;
+    [SerializeField] private float chargeShowerSpeed = 15f;
+    [SerializeField] private float chargeTowelSpeed = 65f;
+    [SerializeField] private float rubChargeMultiplier = 0.05f;
+    [SerializeField] private float maxRubMoveDistance = 0.3f;
 
     [SerializeField] private string nextSceneName = "PlayerRoom";
     [SerializeField] private CutSceneManager cutSceneManager;
+    [SerializeField] private ShampooUIGuideText shampooUIGuideText;
+
+    [SerializeField] private GameObject cursorImage;
 
     private CursorType _cursorType = CursorType.None;
     private bool _wipingAnim = false;
@@ -22,51 +27,89 @@ public class ShampooSystemManager : MonoBehaviour
 
     private int _turn = 1;
 
+    public float Charged => _charged;
+    public float NormalizedCharged => Mathf.Clamp01(_charged / 100f);
+    public int Turn => _turn;
+
     private void Start()
     {
         UIGlow.SetShampooUIHighlight(true);
+        BGMManager.Instance.SetFilterMode(BGMManager.AudioLevel.None);
     }
 
     private void OnEnable()
     {
-        cursorEvent.OnRubbed += TryInteract;
+        cursorEvent.OnRubbedDistance += TryInteract;
         cursorBtn.OnChangeTool += ToolType;
+        cursorBtn.OnChangeTool += TextInteract;
         cursorEvent.OnRubbedStop += StopInteract;
+        cursorEvent.OnHeldOnDog += TryShowerInteract;
+        cursorEvent.OnHeldOnDogStop += StopShowerInteract;
     }
 
     private void OnDisable()
     {
-        cursorEvent.OnRubbed -= TryInteract;
+        cursorEvent.OnRubbedDistance -= TryInteract;
         cursorBtn.OnChangeTool -= ToolType;
+        cursorBtn.OnChangeTool -= TextInteract;
         cursorEvent.OnRubbedStop -= StopInteract;
+        cursorEvent.OnHeldOnDog -= TryShowerInteract;
+        cursorEvent.OnHeldOnDogStop -= StopShowerInteract;
     }
 
     private void ToolType(CursorType type)
     {
         _cursorType = type;
+        ResetChargedForNextTool(type);
     }
 
-    private void TryInteract()
+    private void ResetChargedForNextTool(CursorType type)
+    {
+        if (_charged < 100f) return;
+
+        if (type == CursorType.Shower && _turn == 2)
+        {
+            _charged = 0f;
+        }
+
+        if (type == CursorType.Towel && _turn == 3)
+        {
+            _charged = 0f;
+        }
+    }
+
+    private void TryInteract(float moveDistance)
     {
         if (_cursorType == CursorType.None) return;
 
-        switch (_cursorType)
+        if (_cursorType == CursorType.Shampoo && _turn == 1)
         {
-            case CursorType.Shampoo:
-                ShampooInteract();
-                UIGlow.SetShampooUIHighlight(false);
-                break;
-            case CursorType.Shower:
-                ShowerInteract();
-                UIGlow.SetShowerUIHighlight(false);
-                break;
-            case CursorType.Towel:
-                TowelInteract();
-                UIGlow.SetTowelUIHighlight(false);
-                break;
-            default:
-                return;
+            shampooUIGuideText.StopGuide();
+            ShampooInteract(moveDistance);
+            UIGlow.SetShampooUIHighlight(false);
         }
+        else if (_cursorType == CursorType.Towel && _turn == 3)
+        {
+            shampooUIGuideText.StopGuide();
+            TowelInteract(moveDistance);
+            UIGlow.SetTowelUIHighlight(false);
+        }
+    }
+
+    private void TryShowerInteract()
+    {
+        if (_cursorType != CursorType.Shower || _turn != 2) return;
+
+        shampooUIGuideText.StopGuide();
+        ShowerInteract();
+        UIGlow.SetShowerUIHighlight(false);
+    }
+
+    private void StopShowerInteract()
+    {
+        if (_cursorType != CursorType.Shower) return;
+
+        shampooDogAnimation.StopShowerAnimation();
     }
 
     private void StopInteract()
@@ -90,12 +133,12 @@ public class ShampooSystemManager : MonoBehaviour
         }
     }
 
-    private void ShampooInteract()
+    private void ShampooInteract(float moveDistance)
     {
         if (_turn != 1) return;
 
         shampooDogAnimation.StartSoapAnimation();
-        _charged += Time.deltaTime * chargeShampooSpeed;
+        _charged += GetRubChargeAmount(moveDistance, chargeShampooSpeed);
 
         if (_charged < 20f) return;
         
@@ -103,9 +146,10 @@ public class ShampooSystemManager : MonoBehaviour
 
         if (_charged < 100f) return;
 
-        _charged = 0f;
+        _charged = 100f;
         _turn++;
         Debug.Log("샴푸 이벤트 완료!");
+        shampooUIGuideText.EndToolShampoo();
         UIGlow.SetShowerUIHighlight(true);
     }
 
@@ -124,20 +168,21 @@ public class ShampooSystemManager : MonoBehaviour
 
         if (_charged < 100f) return;
 
-        _charged = 0f;
+        _charged = 100f;
         _turn++;
         Debug.Log("샤워기 이벤트 완료!");
+        shampooUIGuideText.EndToolShower();
         UIGlow.SetTowelUIHighlight(true);
     }
     
-    private void TowelInteract()
+    private void TowelInteract(float moveDistance)
     {
         if (_turn != 3) return;
 
         if (!_wipingAnim) shampooDogAnimation.StartShowerAnimation();
         else shampooDogAnimation.StartTowelAnimation();
 
-        _charged += Time.deltaTime * chargeTowelSpeed;
+        _charged += GetRubChargeAmount(moveDistance, chargeTowelSpeed);
 
         if (_charged < 50f) return;
 
@@ -150,15 +195,41 @@ public class ShampooSystemManager : MonoBehaviour
 
         if (_charged < 100f) return;
 
-        _charged = 0f;
+        _charged = 100f;
         _turn++;
         Debug.Log("타월 이벤트 완료!");
         StartCoroutine(ShowCutScene());
     }
 
+    private float GetRubChargeAmount(float moveDistance, float chargeSpeed)
+    {
+        float clampedMoveDistance = Mathf.Min(moveDistance, maxRubMoveDistance);
+        return clampedMoveDistance * chargeSpeed * rubChargeMultiplier;
+    }
+
     private IEnumerator ShowCutScene()
     {
         yield return StartCoroutine(cutSceneManager.StartCutScene());
+        Cursor.visible = true;
+        cursorImage.SetActive(false);
         SceneLoadManager.Instance.LoadScene(nextSceneName);
+    }
+
+    private void TextInteract(CursorType type)
+    {
+        if (type == CursorType.Shampoo && _turn == 1)
+        {
+            shampooUIGuideText.ShampooBtnClickText();
+        }
+
+        if (type == CursorType.Shower && _turn == 2)
+        {
+            shampooUIGuideText.ShowerBtnClickText();
+        }
+
+        if (type == CursorType.Towel && _turn == 3)
+        {
+            shampooUIGuideText.TowelBtnClickText();
+        }
     }
 }
