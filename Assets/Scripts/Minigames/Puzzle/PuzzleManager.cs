@@ -6,8 +6,15 @@ public class PuzzleManager : MonoBehaviour
 {
     [Header("PuzzleData")]
     [SerializeField] private Camera mainCamera;
+
+    [SerializeField] private bool useUserIMG;
+    [SerializeField] private PuzzleUI PuzzleUI;
+
     [SerializeField] private List<GameObject> Puzzle = new List<GameObject>();
+    [SerializeField] private List<GameObject> PuzzleEnd = new List<GameObject>();
+
     [SerializeField] private GameObject nextpuzzle;
+    [SerializeField] private GameObject nextpuzzle2;
     [SerializeField] private GameObject Finpuzzle;
 
 
@@ -19,7 +26,51 @@ public class PuzzleManager : MonoBehaviour
 
     void Start()
     {
+        PuzzleUI.StartGet();
+
         //Debug.Log("PuzzleManager Start");
+        if (useUserIMG) //나도 이러면 안되는거 아는ㄷ 시발 존나 좃같음아아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ
+        {
+            PuzzleUI.StartGet();
+            PuzzleUI.OnUserPuzzle();
+            PuzzleUI.TextureAP();
+            PuzzleUI.OnImgCutter();
+
+            Finpuzzle.GetComponent<SpriteRenderer>().sprite = PuzzleUI.TextruAP.GetComponent<SpriteRenderer>().sprite;
+
+            PuzzleUI.User_Puzzle_01.transform.parent = Puzzle[0].transform;
+            PuzzleUI.User_Puzzle_02.transform.parent = Puzzle[1].transform;
+            PuzzleUI.User_Puzzle_03.transform.parent = Puzzle[2].transform;
+            PuzzleUI.User_Puzzle_04.transform.parent = Puzzle[3].transform;
+            PuzzleUI.User_Puzzle_05.transform.parent = Puzzle[4].transform;
+
+            PuzzleUI.User_Puzzle_01.transform.localPosition = Vector3.zero;
+            PuzzleUI.User_Puzzle_02.transform.localPosition = Vector3.zero;
+            PuzzleUI.User_Puzzle_03.transform.localPosition = Vector3.zero;
+            PuzzleUI.User_Puzzle_04.transform.localPosition = Vector3.zero;
+            PuzzleUI.User_Puzzle_05.transform.localPosition = Vector3.zero;
+
+            var x = PuzzleUI.User_Puzzle_01.transform.GetChild(0).transform.localPosition.x;
+            var y = PuzzleUI.User_Puzzle_01.transform.GetChild(0).transform.localPosition.y;
+            PuzzleUI.User_Puzzle_01.transform.GetChild(0).transform.localPosition = new Vector3(x, y, 0f);
+
+            x = PuzzleUI.User_Puzzle_02.transform.GetChild(0).transform.localPosition.x;
+            y = PuzzleUI.User_Puzzle_02.transform.GetChild(0).transform.localPosition.y;
+            PuzzleUI.User_Puzzle_02.transform.GetChild(0).transform.localPosition = new Vector3(x, y, 0f);
+
+            x = PuzzleUI.User_Puzzle_03.transform.GetChild(0).transform.localPosition.x;
+            y = PuzzleUI.User_Puzzle_03.transform.GetChild(0).transform.localPosition.y;
+            PuzzleUI.User_Puzzle_03.transform.GetChild(0).transform.localPosition = new Vector3(x, y, 0f);
+
+            x = PuzzleUI.User_Puzzle_04.transform.GetChild(0).transform.localPosition.x;
+            y = PuzzleUI.User_Puzzle_04.transform.GetChild(0).transform.localPosition.y;
+            PuzzleUI.User_Puzzle_04.transform.GetChild(0).transform.localPosition = new Vector3(x, y, 0f);
+
+            x = PuzzleUI.User_Puzzle_05.transform.GetChild(0).transform.localPosition.x;
+            y = PuzzleUI.User_Puzzle_05.transform.GetChild(0).transform.localPosition.y;
+            PuzzleUI.User_Puzzle_05.transform.GetChild(0).transform.localPosition = new Vector3(x, y, 0f);
+
+        }
     }
 
     void Update()
@@ -91,6 +142,7 @@ public class PuzzleManager : MonoBehaviour
 
         isPuzzleFinished = true;
         Debug.Log("성공");
+        PuzzleUI.OffImgCutter();
         StartCoroutine(PuzzleFinC());
     }
 
@@ -99,7 +151,7 @@ public class PuzzleManager : MonoBehaviour
         FadeManager.Instance.FadeOut();
 
         yield return new WaitForSeconds(1.2f);
-        
+
         FadeManager.Instance.FadeIn();
         Finpuzzle.SetActive(true);
         yield return new WaitForSeconds(1.2f);
@@ -107,20 +159,30 @@ public class PuzzleManager : MonoBehaviour
         FadeManager.Instance.FadeOut();
         yield return new WaitForSeconds(1.2f);
 
-        if (nextpuzzle == null)
+        if (nextpuzzle == null && nextpuzzle2 == null)
         {
-             puzzleEnd();
+            puzzleEnd();
         }
-        else nextpuzzle.SetActive(true);
+        else
+        {
+            if (PuzzleUI.TextruAP.GetComponent<SpriteRenderer>().sprite != null && nextpuzzle2 != null)
+            {
+                nextpuzzle2.SetActive(true);
+            }
+            else
+            {
+                nextpuzzle.SetActive(true);
+            }
+        }
         FadeManager.Instance.FadeIn();
         gameObject.SetActive(false);
         yield return new WaitForSeconds(0.5f);
 
-        
+
     }
 
     private void puzzleEnd()
     {
-        
+
     }
 }
