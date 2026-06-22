@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/AT/PlayerRoom.unity
     guid: 1934a1d71a3dfee4780e41f15d0220b4
   - enabled: 1
+    path: Assets/Scenes/AT/MiniGamePicture.unity
+    guid: c56c1d801a06bae4085de896e3d97eef
+  - enabled: 1
     path: Assets/Scenes/AT/MiniGameBall.unity
     guid: fa6f77224d99db24eb7a3d4e6086a3b3
   - enabled: 1
