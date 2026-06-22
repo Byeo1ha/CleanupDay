@@ -13,12 +13,17 @@ public class PuzzleUI : MonoBehaviour
 
     [SerializeField]private ImgLoader imgLoader;
     [SerializeField]public GameObject TextruAP;
-    [SerializeField] private GameObject border;
+    [SerializeField] private GameObject borderSprite;
+    [SerializeField] private GameObject borderImage;
 
     void Start()
     {
         StartGet();
-  
+
+        if (borderImage == null | borderSprite == null) return;
+
+        borderSprite.SetActive(false);
+        borderImage.SetActive(false);
     }
 
     void Update()
@@ -53,8 +58,12 @@ public class PuzzleUI : MonoBehaviour
 
     public void LoadImg()
     {
-        border.SetActive(true);
         imgLoader.OnenUI();
+
+        if (borderImage == null | borderSprite == null) return;
+        
+        borderSprite.SetActive(true);
+        borderImage.SetActive(true);
     }
 
     public void CUTImg()

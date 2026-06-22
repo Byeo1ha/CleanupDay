@@ -3,7 +3,6 @@ using UnityEngine;
 public class TitleBtnManager : MonoBehaviour
 {
     [SerializeField] private string nextSceneName = "IntroScene";
-    [SerializeField] private ImgLoader imgLoader;
 
     public void GameStartBtn()
     {
@@ -15,10 +14,4 @@ public class TitleBtnManager : MonoBehaviour
     {
         Application.Quit();
     }
-
-    public void OpenSliceImg()
-    {
-        
-    }
-
 }
