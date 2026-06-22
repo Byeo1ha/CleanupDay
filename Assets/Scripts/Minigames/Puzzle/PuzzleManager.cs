@@ -38,9 +38,7 @@ public class PuzzleManager : MonoBehaviour
             PuzzleUI.StartGet();
             PuzzleUI.OnUserPuzzle();
             PuzzleUI.TextureAP();
-            PuzzleUI.OnImgCutter();
-
-            Finpuzzle.GetComponent<SpriteRenderer>().sprite = PuzzleUI.TextruAP.GetComponent<SpriteRenderer>().sprite;
+            PuzzleUI.OnImgCutter();;
 
             PuzzleUI.User_Puzzle_01.transform.parent = Puzzle[0].transform;
             PuzzleUI.User_Puzzle_02.transform.parent = Puzzle[1].transform;
@@ -158,7 +156,14 @@ public class PuzzleManager : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
 
         FadeManager.Instance.FadeIn();
-        Finpuzzle.SetActive(true);
+        if (Finpuzzle != null)
+        {
+            Finpuzzle.SetActive(true);
+        }
+        else
+        {
+            transform.localScale = (new Vector3(0.4f,0.4f,0));
+        }   
         
 
         if (nextpuzzle == null && nextpuzzle2 == null)

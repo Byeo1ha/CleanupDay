@@ -427,7 +427,7 @@ Transform:
   m_GameObject: {fileID: 276215882}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.42, y: 3.18, z: -1}
+  m_LocalPosition: {x: 3.37, y: 3.4199998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2428,6 +2428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f8914a7836973479d850cbadf653c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleManager
+  nextSceneName: PlayerRoom
   mainCamera: {fileID: 519420031}
   useUserIMG: 0
   PuzzleUI: {fileID: 1052902838}
@@ -3960,7 +3961,7 @@ Transform:
   m_GameObject: {fileID: 888322009}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.87, y: 7.03, z: -1}
+  m_LocalPosition: {x: -2.5200002, y: 7.4200006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4376,7 +4377,7 @@ Transform:
   m_GameObject: {fileID: 926512208}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.83, y: 0.57, z: -1}
+  m_LocalPosition: {x: -4.4900002, y: 1.4700007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5626,6 +5627,8 @@ MonoBehaviour:
   User_Puzzle_05: {fileID: 0}
   imgLoader: {fileID: 0}
   TextruAP: {fileID: 0}
+  borderSprite: {fileID: 0}
+  borderImage: {fileID: 0}
 --- !u!4 &1052902839
 Transform:
   m_ObjectHideFlags: 0
@@ -5930,7 +5933,7 @@ Transform:
   m_GameObject: {fileID: 1146398524}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.83, y: -7.34, z: -1}
+  m_LocalPosition: {x: 3.76, y: -6.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7393,6 +7396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f8914a7836973479d850cbadf653c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleManager
+  nextSceneName: PlayerRoom
   mainCamera: {fileID: 519420031}
   useUserIMG: 0
   PuzzleUI: {fileID: 1052902838}
@@ -7977,7 +7981,7 @@ Transform:
   m_GameObject: {fileID: 1266564702}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.9, y: 6.1428576, z: 0}
+  m_LocalPosition: {x: -17.460001, y: 5.5528574, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8961,6 +8965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f8914a7836973479d850cbadf653c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleManager
+  nextSceneName: PlayerRoom
   mainCamera: {fileID: 519420031}
   useUserIMG: 0
   PuzzleUI: {fileID: 1052902838}
@@ -9403,7 +9408,7 @@ Transform:
   m_GameObject: {fileID: 1495586050}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.1, y: 1.8, z: 0}
+  m_LocalPosition: {x: 17.539999, y: 1.2099998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10560,7 +10565,7 @@ Transform:
   m_GameObject: {fileID: 1631971254}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.43, y: -7.89, z: -1}
+  m_LocalPosition: {x: -3.14, y: -7.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11226,7 +11231,7 @@ Transform:
   m_GameObject: {fileID: 1705835351}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.5, y: -8.3, z: 0}
+  m_LocalPosition: {x: 16.94, y: -8.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11985,7 +11990,7 @@ Transform:
   m_GameObject: {fileID: 1758977966}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.7, y: -5.571429, z: 0}
+  m_LocalPosition: {x: -16.260002, y: -6.161429, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12056,6 +12061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f8914a7836973479d850cbadf653c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleManager
+  nextSceneName: PlayerRoom
   mainCamera: {fileID: 519420031}
   useUserIMG: 1
   PuzzleUI: {fileID: 1052902838}
@@ -12073,7 +12079,7 @@ MonoBehaviour:
   - {fileID: 276215882}
   nextpuzzle: {fileID: 0}
   nextpuzzle2: {fileID: 0}
-  Finpuzzle: {fileID: 564419994}
+  Finpuzzle: {fileID: 0}
   systemManager: {fileID: 0}
   uiGuideText: {fileID: 1730184639}
 --- !u!4 &1841900850
@@ -12634,7 +12640,7 @@ Transform:
   m_GameObject: {fileID: 1901393955}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.9, y: 9.5, z: 0}
+  m_LocalPosition: {x: 17.339998, y: 8.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
