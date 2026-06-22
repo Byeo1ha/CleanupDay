@@ -26,13 +26,13 @@ public class BoxPanelAnim : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && !_active && !_duration)
+        if (Input.GetKeyDown(KeyCode.Tab) && !_active && !_duration && !cutSceneRemind.NowShowing)
         {
             PlayMoveToTargetPos();
         }
 
         if ((Input.GetKeyDown(KeyCode.Tab) 
-        || Input.GetKeyDown(KeyCode.Escape)) && _active && !_duration)
+        || Input.GetKeyDown(KeyCode.Escape)) && _active && !_duration && !cutSceneRemind.NowShowing)
         {
             cutSceneRemind.SetPropsNone();
             PlayMoveToOriginalPos();

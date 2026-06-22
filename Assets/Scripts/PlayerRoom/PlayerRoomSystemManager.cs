@@ -20,18 +20,19 @@ public class PlayerRoomSystemManager : MonoBehaviour
                 break;
             case 2:
                 glow.SetBallHighlight(true);
-                BGMManager.Instance.SetFilterMode(BGMManager.AudioLevel.High);
+                BGMManager.Instance.SetFilterMode(BGMManager.AudioLevel.VeryHigh);
                 break;
             case 3:
                 glow.SetTugHighlight(true);
-                BGMManager.Instance.SetFilterMode(BGMManager.AudioLevel.Middle);
+                BGMManager.Instance.SetFilterMode(BGMManager.AudioLevel.High);
                 break;
             case 4:
                 glow.SetLeashHighlight(true);
-                BGMManager.Instance.SetFilterMode(BGMManager.AudioLevel.Low);
+                BGMManager.Instance.SetFilterMode(BGMManager.AudioLevel.Middle);
                 break;
             case 5:
                 glow.SetShampooHighlight(true);
+                BGMManager.Instance.SetFilterMode(BGMManager.AudioLevel.Low);
                 break;
             case 6:
                 StartCoroutine(MoveEndingScene());

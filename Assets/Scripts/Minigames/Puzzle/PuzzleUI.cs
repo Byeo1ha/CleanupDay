@@ -13,6 +13,7 @@ public class PuzzleUI : MonoBehaviour
 
     [SerializeField]private ImgLoader imgLoader;
     [SerializeField]public GameObject TextruAP;
+    [SerializeField] private GameObject border;
 
     void Start()
     {
@@ -52,6 +53,7 @@ public class PuzzleUI : MonoBehaviour
 
     public void LoadImg()
     {
+        border.SetActive(true);
         imgLoader.OnenUI();
     }
 

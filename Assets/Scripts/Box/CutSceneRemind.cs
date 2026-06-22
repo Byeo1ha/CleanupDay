@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CutSceneRemind : MonoBehaviour
@@ -8,6 +9,9 @@ public class CutSceneRemind : MonoBehaviour
     [SerializeField] private CutSceneManager leashCutScene;
     [SerializeField] private CutSceneManager shampooCutScene;
     [SerializeField] private PlayerRoomUIGuideText uiGuideText;
+
+    private bool nowShowing = false;
+    public bool NowShowing => nowShowing;
 
     public enum PropsType
     {
@@ -48,26 +52,47 @@ public class CutSceneRemind : MonoBehaviour
 
     public void OnButtonClick()
     {
+        StartCoroutine(COnButtonClick());
+    }
+
+    private IEnumerator COnButtonClick()
+    {
         switch (propsType)
         {
             case PropsType.Picture:
-                StartCoroutine(pictureCutScene.StartCutScene());
+                nowShowing = true;
+                yield return StartCoroutine(pictureCutScene.StartCutScene());
+                nowShowing = false;
                 break;
+
             case PropsType.Ball:
-                StartCoroutine(ballCutScene.StartCutScene());
+                nowShowing = true;
+                yield return StartCoroutine(ballCutScene.StartCutScene());
+                nowShowing = false;
                 break;
+
             case PropsType.Tug:
-                StartCoroutine(tugCutScene.StartCutScene());
+                nowShowing = true;
+                yield return StartCoroutine(tugCutScene.StartCutScene());
+                nowShowing = false;
                 break;
+
             case PropsType.Leash:
-                StartCoroutine(leashCutScene.StartCutScene());
+                nowShowing = true;
+                yield return StartCoroutine(leashCutScene.StartCutScene());
+                nowShowing = false;
                 break;
+
             case PropsType.Shampoo:
-                StartCoroutine(shampooCutScene.StartCutScene());
+                nowShowing = true;
+                yield return StartCoroutine(shampooCutScene.StartCutScene());
+                nowShowing = false;
                 break;
+
             case PropsType.None:
                 uiGuideText.StartGuide();
-                return;
+                yield return null;
+                break;
         }
     }
 }

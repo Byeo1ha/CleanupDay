@@ -15,7 +15,7 @@ public class BGMManager : MonoBehaviour
 
     public enum AudioLevel
     {
-        None, Low, Middle, High
+        None, Low, Middle, High, VeryHigh
     }
 
     private void Awake()
@@ -96,6 +96,10 @@ public class BGMManager : MonoBehaviour
                 targetVolume = 0.7f;
                 break;
             case AudioLevel.High:
+                targetCutoffFrequency = 2000f; 
+                targetVolume = 0.7f;
+                break;
+            case AudioLevel.VeryHigh:
                 targetCutoffFrequency = 600f; 
                 targetVolume = 0.7f;
                 break;
