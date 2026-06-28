@@ -29,6 +29,8 @@ public class BoxPanelAnim : MonoBehaviour
 
     private void Update()
     {
+        if (FadeManager.Instance != null && FadeManager.Instance.IsFading) return;
+        
         if (Input.GetKeyDown(KeyCode.Tab) && !_active && !_duration && !cutSceneRemind.NowShowing && canAccessBox)
         {
             BeginPannel();
