@@ -10,7 +10,7 @@
 ![image](ReadMeSource/gameplay.gif)
 
 ## 🎬 플레이 영상
-- &nbsp; [![Youtube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=EEEEEE)](https://youtu.be/UPqI0yd3f3U?si=Qz4abDF7OfBcqQah)
+- &nbsp; [![Youtube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=EEEEEE)](https://youtu.be/s7HXVZfjiR0?si=G_VClIr413SciTiJ)
 ## 📄 담당 업무
 - 게임 플레이 루프 설계
 - 3개의 미니게임 시스템 구현 (공놀이 / 터그 힘겨루기 / 강아지 목욕의 전체 기능)
