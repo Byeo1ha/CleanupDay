@@ -28,7 +28,7 @@
 - 인터페이스 등장 연출
 - 사운드 페이드 아웃 연출
 - 튜토리얼 연출
-- 
+  
 ## 📚 사용 에셋
 - Book - Page Curl 👉 [![AssetStore](https://img.shields.io/badge/Asset%20Store-181717?style=flat&logo=Unity&logoColor=white)](https://assetstore.unity.com/packages/tools/animation/book-page-curl-55588)
 ```
