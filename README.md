@@ -8,8 +8,9 @@
 - 플랫폼: PC
 - 팀원: 개발 2명, 그래픽 2명 <br>
 ![image](ReadMeSource/gameplay.gif)
+
 ## 🎬 플레이 영상
-- &nbsp; [![GitHub](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=EEEEEE)](https://youtu.be/UPqI0yd3f3U?si=Qz4abDF7OfBcqQah)
+- &nbsp; [![Youtube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=EEEEEE)](https://youtu.be/UPqI0yd3f3U?si=Qz4abDF7OfBcqQah)
 ## 📄 담당 업무
 - 게임 플레이 루프 설계
 - 3개의 미니게임 시스템 구현 (공놀이 / 터그 힘겨루기 / 강아지 목욕의 전체 기능)
@@ -19,6 +20,7 @@
 - 타이틀 화면 구현
 - 엔딩 화면 구현
 - 타이틀과 게임 루프 사이에 나오는 인트로 책 기능 구현 (Asset 활용)
+- 
 ## ✨ 폴리싱 작업 업무
 - 모든 미니게임 화면 전환 페이드 연출
 - 장면 전환에 사용되는 페이드 연출
@@ -26,8 +28,14 @@
 - 인터페이스 등장 연출
 - 사운드 페이드 아웃 연출
 - 튜토리얼 연출
-## 사용 에셋
-- Book - Page Curl 👉 [![GitHub](https://img.shields.io/badge/Asset%20Store-181717?style=flat&logo=Unity&logoColor=white)](https://assetstore.unity.com/packages/tools/animation/book-page-curl-55588)
+- 
+## 📚 사용 에셋
+- Book - Page Curl 👉 [![AssetStore](https://img.shields.io/badge/Asset%20Store-181717?style=flat&logo=Unity&logoColor=white)](https://assetstore.unity.com/packages/tools/animation/book-page-curl-55588)
 ```
 인트로 책 연출에서 사용
 ```
+
+## 📰 관련 기사
+[![Link](https://img.shields.io/badge/Daum-0EB4FC?style=flat&logoColor=white)](https://v.daum.net/v/20260630175602360) 
+[![Link](https://img.shields.io/badge/Newspim-007FFF?style=flat&logoColor=white)](https://www.newspim.com/news/view/20260630000887) 
+[![Link](https://img.shields.io/badge/Chungnamilbo-F05650?style=flat&logoColor=white)](https://www.chungnamilbo.co.kr/news/articleView.html?idxno=896364)
