@@ -5,7 +5,6 @@ public class BallGuide : MonoBehaviour
 {
     [SerializeField] private BallThrowController ballThrowController;
     [SerializeField] private Transform throwPoint;
-    [SerializeField] private LineRenderer lineRenderer;
 
     [SerializeField] private Transform landingMarker;
 
@@ -24,7 +23,6 @@ public class BallGuide : MonoBehaviour
     {
         ballThrowController = GameObject.Find("BallThrowManager").GetComponent<BallThrowController>();
         throwPoint = GameObject.Find("ThrowPoint").GetComponent<Transform>();
-        lineRenderer = GameObject.Find("LineGuide").GetComponent<LineRenderer>();
         landingMarker = GameObject.Find("Marker").GetComponent<Transform>();
 
         groundLayer = LayerMask.GetMask("Ground");
@@ -33,8 +31,6 @@ public class BallGuide : MonoBehaviour
 
     private void Awake()
     {
-        if (lineRenderer != null)
-            lineRenderer.enabled = false;
         
         if (landingMarker != null)
             landingMarker.gameObject.SetActive(false);
@@ -60,13 +56,11 @@ public class BallGuide : MonoBehaviour
 
     private void ShowGuide()
     {
-        lineRenderer.enabled = true;
         landingMarker.gameObject.SetActive(true);
     }
 
     private void HideGuide()
     {
-        lineRenderer.enabled = false;
         landingMarker.gameObject.SetActive(false);
     }
 
@@ -102,9 +96,6 @@ public class BallGuide : MonoBehaviour
             previousPoint = nextPoint;
             lastPoint = nextPoint;
         }
-
-        lineRenderer.positionCount = points.Count;
-        lineRenderer.SetPositions(points.ToArray());
 
         UpdateLandingMarker(lastPoint, hitGround);
     }
